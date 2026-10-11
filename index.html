@@ -118,6 +118,268 @@
       gap: 10px;
     }
 
+    .pet-switch {
+      display: flex;
+      gap: 6px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.12);
+    }
+
+    .pet-button {
+      border: 0;
+      border-radius: 999px;
+      padding: 6px 9px;
+      color: var(--muted);
+      background: transparent;
+      font: 700 0.64rem 'Manrope', sans-serif;
+      cursor: pointer;
+      transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+      white-space: nowrap;
+    }
+
+    .pet-button:hover,
+    .pet-button.active {
+      color: var(--button-text);
+      background: linear-gradient(135deg, var(--button-light) 0%, var(--button-mid) 55%, var(--button-deep) 100%);
+      box-shadow: 0 4px 12px var(--button-shadow);
+    }
+
+    .pet-button:active { transform: scale(0.94); }
+
+    .pet-stage {
+      width: 140px;
+      height: 110px;
+      position: relative;
+      margin: 0 auto clamp(22px, 3vw, 34px);
+    }
+
+    .pet-entity {
+      width: 126px;
+      height: 88px;
+      position: absolute;
+      top: 10px;
+      left: 7px;
+      display: none;
+      transform-origin: center bottom;
+      animation: pet-float 3.6s ease-in-out infinite;
+      filter: drop-shadow(0 12px 14px rgba(0, 0, 0, 0.2));
+    }
+
+    .pet-entity.active { display: block; }
+
+    .pet-eye {
+      width: 22px;
+      height: 20px;
+      position: absolute;
+      top: 22px;
+      z-index: 2;
+      border-radius: 50%;
+      background: #fffaf0;
+      box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .pet-eye.left { left: 19px; }
+    .pet-eye.right { right: 19px; }
+
+    .pet-pupil {
+      width: 9px;
+      height: 11px;
+      position: absolute;
+      top: 4px;
+      left: 7px;
+      border-radius: 50%;
+      background: #182125;
+      will-change: transform;
+    }
+
+    .pet-pupil::after {
+      content: '';
+      width: 3px;
+      height: 3px;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .bear-ear, .cat-ear, .rabbit-ear, .monkey-ear {
+      position: absolute;
+    }
+
+    .bear-ear {
+      width: 42px;
+      height: 42px;
+      top: 0;
+      border: 5px solid #57372d;
+      border-radius: 50%;
+      background: #a96542;
+    }
+
+    .bear-ear::after, .monkey-ear::after {
+      content: '';
+      position: absolute;
+      inset: 7px;
+      border-radius: 50%;
+      background: #efa28d;
+    }
+
+    .bear-ear.left { left: 12px; }
+    .bear-ear.right { right: 12px; }
+
+    .bear-head, .cat-head, .rabbit-head, .monkey-head {
+      width: 102px;
+      height: 74px;
+      position: absolute;
+      left: 12px;
+      top: 14px;
+      z-index: 1;
+    }
+
+    .bear-head {
+      border: 5px solid #57372d;
+      border-radius: 48% 48% 45% 45%;
+      background: linear-gradient(145deg, #b36d43, #8f5035);
+    }
+
+    .bear-muzzle {
+      width: 42px;
+      height: 27px;
+      position: absolute;
+      left: 25px;
+      bottom: 6px;
+      border-radius: 50%;
+      background: #e4a85c;
+    }
+
+    .bear-nose {
+      width: 14px;
+      height: 10px;
+      position: absolute;
+      top: 4px;
+      left: 14px;
+      border-radius: 50%;
+      background: #593128;
+    }
+
+    .bear-mouth {
+      width: 14px;
+      height: 8px;
+      position: absolute;
+      top: 11px;
+      left: 14px;
+      border-bottom: 2px solid #392622;
+      border-radius: 50%;
+    }
+
+    .cat-ear {
+      width: 34px;
+      height: 38px;
+      top: 2px;
+      border: 5px solid #554b52;
+      background: #e9e7e9;
+      clip-path: polygon(50% 0, 0 100%, 100% 100%);
+    }
+
+    .cat-ear::after {
+      content: '';
+      position: absolute;
+      inset: 7px;
+      background: #eca4b5;
+      clip-path: polygon(50% 15%, 15% 100%, 85% 100%);
+    }
+
+    .cat-ear.left { left: 14px; transform: rotate(-16deg); }
+    .cat-ear.right { right: 14px; transform: rotate(16deg); }
+
+    .cat-head {
+      border: 5px solid #554b52;
+      border-radius: 50% 50% 46% 46%;
+      background: linear-gradient(145deg, #f1f1f2, #d7d6db);
+    }
+
+    .cat-head .pet-eye {
+      width: 25px;
+      height: 25px;
+      top: 20px;
+      border: 4px solid #675b65;
+      background: #fffdf4;
+    }
+
+    .cat-head .pet-pupil { width: 11px; height: 14px; left: 3px; top: 1px; }
+    .cat-nose { width: 11px; height: 8px; position: absolute; left: 41px; bottom: 20px; border-radius: 40%; background: #b7657d; }
+    .cat-mouth { width: 16px; height: 8px; position: absolute; left: 38px; bottom: 12px; border-bottom: 2px solid #554b52; border-radius: 50%; }
+    .cat-whiskers { width: 22px; height: 12px; position: absolute; bottom: 14px; }
+    .cat-whiskers.left { left: 6px; border-top: 2px solid #554b52; border-bottom: 2px solid #554b52; transform: rotate(5deg); }
+    .cat-whiskers.right { right: 6px; border-top: 2px solid #554b52; border-bottom: 2px solid #554b52; transform: rotate(-5deg); }
+
+    .rabbit-ear {
+      width: 28px;
+      height: 60px;
+      top: -30px;
+      border: 4.5px solid #675d68;
+      border-radius: 50% 50% 40% 40%;
+      background: #e4dce8;
+    }
+
+    .rabbit-ear::after {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      background: #eca4b5;
+    }
+
+    .rabbit-ear.left { left: 24px; transform: rotate(-8deg); }
+    .rabbit-ear.right { right: 24px; transform: rotate(8deg); }
+
+    .rabbit-head {
+      border: 5px solid #675d68;
+      border-radius: 50% 50% 45% 45%;
+      background: linear-gradient(145deg, #e4dce8, #c6b7cc);
+    }
+
+    .rabbit-head .pet-eye {
+      width: 24px;
+      height: 24px;
+      top: 21px;
+      border: 4px solid #6c606b;
+      background: #fffdfd;
+    }
+
+    .rabbit-head .pet-pupil { width: 10px; height: 12px; left: 3px; top: 2px; }
+    .rabbit-muzzle { width: 38px; height: 24px; position: absolute; left: 27px; bottom: 6px; border-radius: 50%; background: #f1c9d2; }
+    .rabbit-nose { width: 12px; height: 9px; position: absolute; top: 2px; left: 13px; border-radius: 50%; background: #b2677b; }
+    .rabbit-mouth { width: 12px; height: 6px; position: absolute; top: 9px; left: 13px; border-bottom: 2px solid #675d68; border-radius: 50%; }
+    .rabbit-teeth { display: flex; gap: 1.5px; position: absolute; bottom: -6px; left: 13px; }
+    .rabbit-tooth { width: 5px; height: 6px; border: 1px solid #675d68; border-top: 0; border-radius: 0 0 2px 2px; background: #fff; }
+
+    .monkey-ear {
+      width: 38px;
+      height: 38px;
+      top: 26px;
+      border: 5px solid #44322c;
+      border-radius: 50%;
+      background: #7a503d;
+    }
+
+    .monkey-ear.left { left: 0; }
+    .monkey-ear.right { right: 0; }
+    .monkey-head { border: 5px solid #44322c; border-radius: 50%; background: linear-gradient(145deg, #8b4a2f, #3f2926); }
+    .monkey-face-mask { position: absolute; top: 8px; left: 14px; right: 14px; height: 40px; border-radius: 20px 20px 14px 14px; background: #edd2bd; clip-path: polygon(0 0, 50% 18%, 100% 0, 100% 100%, 0 100%); }
+    .monkey-muzzle { width: 56px; height: 32px; position: absolute; left: 18px; bottom: 4px; z-index: 2; border: 3.5px solid #44322c; border-radius: 50%; background: #e6b290; }
+    .monkey-nostril { width: 4px; height: 5px; position: absolute; top: 5px; border-radius: 50%; background: #44322c; }
+    .monkey-nostril.left { left: 20px; }
+    .monkey-nostril.right { right: 20px; }
+    .monkey-mouth { width: 20px; height: 9px; position: absolute; top: 12px; left: 14px; border-bottom: 2.8px solid #44322c; border-radius: 50%; }
+
+    @keyframes pet-float {
+      0%, 100% { transform: translateY(0) scale(1.3) rotate(-2deg); }
+      50% { transform: translateY(-6px) scale(1.3) rotate(2deg); }
+    }
+
     .eyebrow {
       display: flex;
       align-items: center;
@@ -254,17 +516,17 @@
       text-align: center;
     }
 
-    .bear {
+    .animal {
       width: 126px;
       height: 88px;
       position: relative;
       margin: 0 auto clamp(22px, 3vw, 34px);
       transform-origin: center bottom;
-      animation: bear-float 3.6s ease-in-out infinite;
+      animation: animal-float 3.6s ease-in-out infinite;
       filter: drop-shadow(0 12px 14px rgba(0, 0, 0, 0.2));
     }
 
-    .bear-ear {
+    .animal-ear {
       width: 42px;
       height: 42px;
       position: absolute;
@@ -274,7 +536,7 @@
       background: #8c614a;
     }
 
-    .bear-ear::after {
+    .animal-ear::after {
       content: '';
       position: absolute;
       inset: 7px;
@@ -282,10 +544,10 @@
       background: #d69a7c;
     }
 
-    .bear-ear.left { left: 12px; }
-    .bear-ear.right { right: 12px; }
+    .animal-ear.left { left: 12px; }
+    .animal-ear.right { right: 12px; }
 
-    .bear-head {
+    .animal-head {
       width: 102px;
       height: 74px;
       position: absolute;
@@ -297,7 +559,7 @@
       background: linear-gradient(145deg, #b47b5c, #76503e);
     }
 
-    .bear-eye {
+    .animal-eye {
       width: 22px;
       height: 19px;
       position: absolute;
@@ -307,10 +569,10 @@
       box-shadow: inset 0 -2px 3px rgba(81, 55, 47, 0.22);
     }
 
-    .bear-eye.left { left: 19px; }
-    .bear-eye.right { right: 19px; }
+    .animal-eye.left { left: 19px; }
+    .animal-eye.right { right: 19px; }
 
-    .bear-pupil {
+    .animal-pupil {
       width: 9px;
       height: 11px;
       position: absolute;
@@ -321,7 +583,7 @@
       will-change: transform;
     }
 
-    .bear-pupil::after {
+    .animal-pupil::after {
       content: '';
       width: 3px;
       height: 3px;
@@ -332,7 +594,7 @@
       background: #fff;
     }
 
-    .bear-muzzle {
+    .animal-muzzle {
       width: 42px;
       height: 27px;
       position: absolute;
@@ -342,7 +604,7 @@
       background: #dca784;
     }
 
-    .bear-nose {
+    .animal-nose {
       width: 14px;
       height: 10px;
       position: absolute;
@@ -352,7 +614,7 @@
       background: #392622;
     }
 
-    .bear-mouth {
+    .animal-mouth {
       width: 14px;
       height: 8px;
       position: absolute;
@@ -362,7 +624,117 @@
       border-radius: 50%;
     }
 
-    @keyframes bear-float {
+    .animal-cat .animal-ear {
+      width: 42px;
+      height: 46px;
+      top: -2px;
+      border: 0;
+      border-radius: 0;
+      background: #e9e7e9;
+      clip-path: polygon(0 100%, 24% 0, 100% 100%);
+    }
+
+    .animal-cat .animal-ear::after {
+      inset: 8px 10px 8px 11px;
+      background: #eca4b5;
+      clip-path: polygon(0 100%, 28% 0, 100% 100%);
+    }
+
+    .animal-cat .animal-head { border-color: #554b52; background: linear-gradient(145deg, #f1f1f2, #d7d6db); }
+    .animal-cat .animal-muzzle { background: #f4cbd3; }
+    .animal-cat .animal-nose { width: 11px; height: 8px; left: 15px; background: #b7657d; }
+    .animal-cat .animal-eye { width: 25px; height: 25px; top: 20px; border: 4px solid #675b65; border-radius: 50%; background: #fffdf4; }
+    .animal-cat .animal-pupil { width: 11px; height: 14px; left: 3px; top: 1px; }
+    .animal-cat .animal-muzzle::before,
+    .animal-cat .animal-muzzle::after {
+      content: '';
+      width: 25px;
+      height: 8px;
+      position: absolute;
+      top: 9px;
+      border-top: 1px solid rgba(76, 48, 40, 0.65);
+      border-bottom: 1px solid rgba(76, 48, 40, 0.45);
+    }
+
+    .animal-cat .animal-muzzle::before { left: -22px; transform: rotate(8deg); }
+    .animal-cat .animal-muzzle::after { right: -22px; transform: rotate(-8deg); }
+
+    .animal-monkey .animal-ear {
+      width: 35px;
+      height: 35px;
+      top: 20px;
+      border-color: #51372f;
+      background: #a86f4f;
+    }
+
+    .animal-monkey .animal-ear::after { background: #d69a7c; }
+    .animal-monkey .animal-head { border-radius: 45% 45% 42% 42%; background: linear-gradient(145deg, #8b4a2f, #3f2926); }
+    .animal-monkey .animal-muzzle { width: 47px; height: 31px; left: 22px; bottom: 3px; background: #e1aa79; }
+    .animal-monkey .animal-nose { border-radius: 45%; }
+
+    .animal-mouse .animal-ear {
+      width: 46px;
+      height: 46px;
+      border-color: #5b4b50;
+      background: #a99ba0;
+    }
+
+    .animal-mouse .animal-ear::after { background: #e6b5bd; }
+    .animal-mouse .animal-head { border-color: #4c4249; border-radius: 46% 46% 42% 42%; background: linear-gradient(145deg, #c9c5cb, #69616b); }
+    .animal-mouse .animal-muzzle { background: #e0c5c5; }
+    .animal-mouse .animal-nose { width: 10px; height: 8px; left: 16px; background: #9b5361; }
+    .animal-mouse .animal-muzzle::before,
+    .animal-mouse .animal-muzzle::after {
+      content: '';
+      width: 28px;
+      height: 12px;
+      position: absolute;
+      top: 8px;
+      border-top: 1px solid rgba(91, 75, 80, 0.6);
+      border-bottom: 1px solid rgba(91, 75, 80, 0.42);
+    }
+
+    .animal-mouse .animal-muzzle::before { left: -25px; transform: rotate(7deg); }
+    .animal-mouse .animal-muzzle::after { right: -25px; transform: rotate(-7deg); }
+
+    .animal-rabbit .animal-ear {
+      width: 25px;
+      height: 53px;
+      top: -15px;
+      border-color: #63505b;
+      border-radius: 50% 50% 42% 42%;
+      background: #f0e4e8;
+    }
+
+    .animal-rabbit .animal-ear.left { left: 31px; transform: rotate(-10deg); }
+    .animal-rabbit .animal-ear.right { right: 31px; transform: rotate(10deg); }
+    .animal-rabbit .animal-ear::after { inset: 6px; background: #e8a9b8; }
+    .animal-rabbit .animal-head { border-color: #675d68; background: linear-gradient(145deg, #e4dce8, #c6b7cc); }
+    .animal-rabbit .animal-eye { width: 24px; height: 24px; top: 21px; border: 4px solid #6c606b; border-radius: 50%; background: #fffdfd; }
+    .animal-rabbit .animal-pupil { width: 10px; height: 12px; left: 3px; top: 2px; }
+    .animal-rabbit .animal-muzzle { background: #f1c9d2; }
+    .animal-rabbit .animal-nose { width: 11px; height: 8px; left: 15px; background: #b2677b; }
+    .animal-rabbit .animal-muzzle::after {
+      content: '';
+      width: 14px;
+      height: 8px;
+      position: absolute;
+      left: 14px;
+      bottom: -4px;
+      border-radius: 0 0 5px 5px;
+      background: #fffafc;
+      box-shadow: 15px 0 #fffafc;
+    }
+
+    .animal-bear .animal-ear { border-color: #57372d; background: #a96542; }
+    .animal-bear .animal-ear::after { background: #efa28d; }
+    .animal-bear .animal-head { border-color: #57372d; background: linear-gradient(145deg, #b36d43, #8f5035); }
+    .animal-bear .animal-eye { width: 24px; height: 24px; top: 20px; }
+    .animal-bear .animal-pupil { width: 11px; height: 13px; left: 6px; top: 3px; }
+    .animal-bear .animal-muzzle { background: #e4a85c; }
+    .animal-bear .animal-nose { background: #593128; }
+
+    @keyframes animal-float {
       0%, 100% { transform: translateY(0) scale(1.35) rotate(-2deg); }
       50% { transform: translateY(-6px) scale(1.35) rotate(2deg); }
     }
@@ -649,6 +1021,8 @@
       body { overflow: auto; padding: 16px 0; }
       .clock-shell { border-radius: 22px; padding: 26px 20px; }
       .topbar { align-items: flex-start; flex-direction: column; }
+      .controls { width: 100%; flex-wrap: wrap; justify-content: center; gap: 6px; }
+      .pet-switch { width: 100%; justify-content: center; }
       .clock-area { margin-top: 58px; }
       .date-row { align-items: flex-start; flex-direction: column; gap: 9px; }
       .timezone { font-size: 0.66rem; }
@@ -669,6 +1043,12 @@
     <div class="topbar">
       <div class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Thời gian hiện tại</div>
       <div class="controls">
+        <div class="pet-switch" role="group" aria-label="Chọn con vật">
+          <button class="pet-button active" type="button" data-pet="bear">🐻 Gấu</button>
+          <button class="pet-button" type="button" data-pet="cat">🐱 Mèo</button>
+          <button class="pet-button" type="button" data-pet="rabbit">🐰 Thỏ</button>
+          <button class="pet-button" type="button" data-pet="monkey">🐵 Khỉ</button>
+        </div>
         <div class="mode-switch" role="group" aria-label="Chọn định dạng giờ">
           <button class="mode-button active" data-mode="24" type="button">24 GIỜ</button>
           <button class="mode-button" data-mode="12" type="button">12 GIỜ</button>
@@ -678,13 +1058,57 @@
     </div>
 
     <section class="clock-area">
-      <div class="bear" aria-label="Chú gấu đang nhìn theo con trỏ chuột">
-        <span class="bear-ear left"></span>
-        <span class="bear-ear right"></span>
-        <div class="bear-head">
-          <span class="bear-eye left"><span class="bear-pupil"></span></span>
-          <span class="bear-eye right"><span class="bear-pupil"></span></span>
-          <span class="bear-muzzle"><span class="bear-nose"></span><span class="bear-mouth"></span></span>
+      <div class="pet-stage" aria-label="Con vật đang nhìn theo con trỏ chuột">
+        <div class="pet-entity active" id="pet-bear" aria-label="Chú gấu đang nhìn theo con trỏ chuột">
+          <span class="bear-ear left"></span>
+          <span class="bear-ear right"></span>
+          <div class="bear-head">
+            <span class="pet-eye left"><span class="pet-pupil"></span></span>
+            <span class="pet-eye right"><span class="pet-pupil"></span></span>
+            <div class="bear-muzzle"><span class="bear-nose"></span><span class="bear-mouth"></span></div>
+          </div>
+        </div>
+
+        <div class="pet-entity" id="pet-cat" aria-label="Chú mèo đang nhìn theo con trỏ chuột">
+          <span class="cat-ear left"></span>
+          <span class="cat-ear right"></span>
+          <div class="cat-head">
+            <span class="pet-eye left"><span class="pet-pupil"></span></span>
+            <span class="pet-eye right"><span class="pet-pupil"></span></span>
+            <span class="cat-nose"></span>
+            <span class="cat-mouth"></span>
+            <span class="cat-whiskers left"></span>
+            <span class="cat-whiskers right"></span>
+          </div>
+        </div>
+
+        <div class="pet-entity" id="pet-rabbit" aria-label="Chú thỏ đang nhìn theo con trỏ chuột">
+          <span class="rabbit-ear left"></span>
+          <span class="rabbit-ear right"></span>
+          <div class="rabbit-head">
+            <span class="pet-eye left"><span class="pet-pupil"></span></span>
+            <span class="pet-eye right"><span class="pet-pupil"></span></span>
+            <div class="rabbit-muzzle">
+              <span class="rabbit-nose"></span>
+              <span class="rabbit-mouth"></span>
+              <div class="rabbit-teeth"><span class="rabbit-tooth"></span><span class="rabbit-tooth"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pet-entity" id="pet-monkey" aria-label="Chú khỉ đang nhìn theo con trỏ chuột">
+          <span class="monkey-ear left"></span>
+          <span class="monkey-ear right"></span>
+          <div class="monkey-head">
+            <div class="monkey-face-mask"></div>
+            <span class="pet-eye left"><span class="pet-pupil"></span></span>
+            <span class="pet-eye right"><span class="pet-pupil"></span></span>
+            <div class="monkey-muzzle">
+              <span class="monkey-nostril left"></span>
+              <span class="monkey-nostril right"></span>
+              <span class="monkey-mouth"></span>
+            </div>
+          </div>
         </div>
       </div>
       <div class="time" aria-live="polite" aria-label="Giờ hiện tại">
@@ -739,6 +1163,7 @@
     const weekdays = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
     let mode = 24;
     const savedTheme = localStorage.getItem('clock-theme');
+    const savedAnimal = localStorage.getItem('clock-animal') || 'bear';
 
     const elements = {
       hourTens: document.getElementById('hour-tens'),
@@ -772,8 +1197,10 @@
     let soundcloudWidget = null;
     let repeatTrack = localStorage.getItem('clock-repeat-track') === 'true';
 
-    const bearPupils = document.querySelectorAll('.bear-pupil');
-    const pupilPositions = new WeakMap([...bearPupils].map(pupil => [pupil, { x: 0, y: 0 }]));
+    const petButtons = document.querySelectorAll('.pet-button');
+    const petEntities = document.querySelectorAll('.pet-entity');
+    const allPupils = document.querySelectorAll('.pet-pupil');
+    const pupilPositions = new WeakMap([...allPupils].map(pupil => [pupil, { x: 0, y: 0 }]));
     let pointerX = window.innerWidth / 2;
     let pointerY = window.innerHeight / 2;
 
@@ -783,10 +1210,11 @@
     });
 
     function animatePupils() {
-      bearPupils.forEach(pupil => {
+      const activePet = document.querySelector('.pet-entity.active');
+      activePet?.querySelectorAll('.pet-pupil').forEach(pupil => {
         const eye = pupil.parentElement.getBoundingClientRect();
-        const targetX = Math.max(-1, Math.min(1, (pointerX - (eye.left + eye.width / 2)) / 70)) * 5;
-        const targetY = Math.max(-1, Math.min(1, (pointerY - (eye.top + eye.height / 2)) / 70)) * 4;
+        const targetX = Math.max(-1, Math.min(1, (pointerX - (eye.left + eye.width / 2)) / 75)) * 5;
+        const targetY = Math.max(-1, Math.min(1, (pointerY - (eye.top + eye.height / 2)) / 75)) * 4;
         const position = pupilPositions.get(pupil);
         position.x += (targetX - position.x) * 0.24;
         position.y += (targetY - position.y) * 0.24;
@@ -803,6 +1231,13 @@
       elements.themeToggle.textContent = isLight ? '☾' : '☼';
       elements.themeToggle.setAttribute('aria-label', isLight ? 'Chuyển sang chế độ tối' : 'Chuyển sang chế độ sáng');
       localStorage.setItem('clock-theme', isLight ? 'light' : 'dark');
+    }
+
+    function setActivePet(name) {
+      const validPet = ['bear', 'cat', 'rabbit', 'monkey'].includes(name) ? name : 'bear';
+      petButtons.forEach(button => button.classList.toggle('active', button.dataset.pet === validPet));
+      petEntities.forEach(entity => entity.classList.toggle('active', entity.id === `pet-${validPet}`));
+      localStorage.setItem('clock-animal', validPet);
     }
 
     function updateDigit(element, value) {
@@ -1063,7 +1498,12 @@
       setTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light');
     });
 
+    petButtons.forEach(button => {
+      button.addEventListener('click', () => setActivePet(button.dataset.pet));
+    });
+
     setTheme(savedTheme === 'light' ? 'light' : 'dark');
+    setActivePet(savedAnimal);
     renderPlaylist();
     updateClock();
     setInterval(updateClock, 1000);
